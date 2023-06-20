@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>안녕하세요</title>
+</head>
+<body>
+    <h1>질문내용</h1>
+    <h3>{{ question.subject }}</h3>
+    <h3>{{ question.content  }}</h3>
+    <div>
+        <ul>
+            {% for answer in question.answer_set.all %}
+            <li>{{ answer.content }}</li> <!--모델생성한거 불러오기-->
+            {% endfor %}
+        </ul>
+        <!-- 답변 등록 폼-->
+        <form action="{% url 'board:answer_create' question.id %}" method="post">
+            {% csrf_token %}
+            <div>
+                <textarea name="content" rows="10" cols="50"></textarea>
+
+
+            </div>
+            <button type="submit">답변 등록</button>
+
+        </form>
+    </div>
+</body>
+</html>
