@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>블로그홈</h1>
+    {% if post_list %}
+    <!--포스트 가져옴-->
+        {% for post in post_list %}
+            <a href="">{{ post.title }}</a>
+
+            <h5 style="white-space: pre-line">
+                {{ post.content }}</h5>
+            <p>작성일{{ post.pub_date }}</p>
+
+        {% endfor %}
+    {% else %}
+        <p>포스트가 없습니다.</p>
+    {% endif %}
+</div>
+{% endblock %}
